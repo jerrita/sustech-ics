@@ -1,0 +1,17 @@
+[project]
+name = "sustech_ics"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "jerrita", email = "je5r1ta@icloud.com"},
+]
+dependencies = [
+    "icalendar>=5.0.13",
+]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
