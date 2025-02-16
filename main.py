@@ -18,7 +18,8 @@ def class_time_to_hours(class_period):
         '3-4': ('10:20', '12:10'),
         '5-6': ('14:00', '15:50'),
         '7-8': ('16:20', '18:10'),
-        '9-10': ('19:00', '20:50')
+        '9-10': ('19:00', '20:50'),
+        '9-11': ('19:00', '21:50')
     }
     return period_times.get(class_period)
 
@@ -30,6 +31,7 @@ def parse_kbxx(kbxx):
     if match:
         return match.groupdict()
     else:
+        print(f'Error: {kbxx}')
         return None
 
 
@@ -39,6 +41,7 @@ def parse_key(key):
     match = re.match(pattern, key)
     if match:
         return int(match.group('day_of_week'))
+    print(f'Error: {key}')
     return None
 
 
@@ -105,6 +108,6 @@ def create_ics(schedule_data, output_file, start_monday):
 if __name__ == '__main__':
     schedule_file = 'data.json'  # 你的课表文件路径
     output_file = 'schedule.ics'  # 输出的ICS文件路径
-    start_monday = datetime(2024, 9, 9)  # 开学第一周的周一日期
+    start_monday = datetime(2025, 2, 17)  # 开学第一周的周一日期
     schedule_data = load_schedule(schedule_file)
     create_ics(schedule_data, output_file, start_monday)
